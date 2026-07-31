@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tardivo Marketing — Mais visibilidade. Mais orçamentos.</title>
+<meta name="description" content="Agência de marketing no Rio de Janeiro. Tráfego pago, sites, landing pages e redes sociais para PMEs, negócios locais e profissionais de todo o Brasil.">
+<style>
+  :root{
+    --navy-900:#0A1C36;
+    --navy-850:#0C2140;
+    --navy-800:#0E2749;
+    --navy-line:#1C3A63;
+    --orange:#F26A21;
+    --orange-2:#F7941D;
+    --ice:#EEF3FA;
+    --slate:#93A6C4;
+    --slate-dim:#6E82A3;
+    --maxw:1160px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--navy-900);
+    color:var(--ice);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--orange);color:#fff}
+
+  /* radial atmosphere */
+  body::before{
+    content:"";
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(900px 600px at 78% -8%, rgba(242,106,33,.16), transparent 60%),
+      radial-gradient(1100px 800px at 8% 12%, rgba(28,58,99,.55), transparent 55%);
+  }
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+
+  /* ---------- shared type devices ---------- */
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:14px;
+    font-size:12px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--orange);
+  }
+  .eyebrow::before{
+    content:"";width:26px;height:2px;background:var(--orange);display:inline-block;
+    border-radius:2px;
+  }
+  .eyebrow.slate{color:var(--slate)}
+  .eyebrow.slate::before{background:var(--orange)}
+
+  h2.section-title{
+    font-size:clamp(28px,4.4vw,46px);
+    font-weight:800;letter-spacing:-.02em;line-height:1.05;
+    margin:20px 0 0;max-width:16ch;
+  }
+  .lead{color:var(--slate);font-size:clamp(15px,1.7vw,18px);max-width:52ch;margin-top:16px}
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    backdrop-filter:blur(12px);
+    background:rgba(10,28,54,.72);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease, background .3s ease;
+  }
+  header.nav.scrolled{border-bottom-color:var(--navy-line);background:rgba(9,25,48,.9)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.01em;font-size:19px}
+  .brand .mark{display:flex;align-items:flex-end;gap:2.5px;height:20px}
+  .brand .mark i{width:4px;background:var(--slate-dim);border-radius:1px;display:block}
+  .brand .mark i:nth-child(1){height:8px}
+  .brand .mark i:nth-child(2){height:13px}
+  .brand .mark i:nth-child(3){height:20px;background:var(--orange)}
+  .brand b{font-weight:800}
+  .brand span{color:var(--orange)}
+  .brand-logo{height:46px;width:auto;display:block}
+  @media(max-width:560px){.brand-logo{height:40px}}
+  .nav-links{display:flex;align-items:center;gap:34px}
+  .nav-links a.link{font-size:14px;color:var(--slate);font-weight:500;transition:color .2s}
+  .nav-links a.link:hover{color:var(--ice)}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-weight:700;font-size:14.5px;
+    padding:11px 20px;border-radius:999px;
+    transition:transform .18s ease, box-shadow .25s ease, background .25s ease;
+    white-space:nowrap;cursor:pointer;border:0;
+  }
+  .btn svg{width:17px;height:17px;flex:none}
+  .btn-wa{background:var(--orange);color:#fff;box-shadow:0 8px 22px -8px rgba(242,106,33,.7)}
+  .btn-wa:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(242,106,33,.85)}
+  .btn-ghost{background:transparent;color:var(--ice);border:1px solid var(--navy-line)}
+  .btn-ghost:hover{border-color:var(--slate);transform:translateY(-2px)}
+  .btn-lg{padding:15px 28px;font-size:16px}
+
+  .nav-cta{display:inline-flex}
+
+  /* ---------- hero ---------- */
+  .hero{padding:150px 0 90px}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .hero h1{
+    font-size:clamp(38px,6.4vw,74px);
+    font-weight:800;line-height:1.02;letter-spacing:-.03em;
+    margin:22px 0 0;
+  }
+  .hero h1 .accent{color:var(--orange)}
+  .hero p.lead{margin-top:22px;max-width:46ch}
+  .hero-cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+  .hero-meta{display:flex;gap:30px;margin-top:40px;flex-wrap:wrap}
+  .hero-meta .item{display:flex;flex-direction:column;gap:2px}
+  .hero-meta .item b{font-size:15px;font-weight:700;color:var(--ice)}
+  .hero-meta .item small{font-size:12.5px;color:var(--slate-dim);letter-spacing:.02em}
+
+  /* signature growth chart */
+  .chart-card{
+    position:relative;
+    background:linear-gradient(160deg,var(--navy-850),var(--navy-800));
+    border:1px solid var(--navy-line);
+    border-radius:22px;
+    padding:30px 30px 26px;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,.8);
+  }
+  .chart-card .tag{
+    display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;
+  }
+  .chart-card .tag small{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--slate-dim);font-weight:700}
+  .chart-card .tag b{font-size:13px;color:var(--orange);font-weight:700}
+  .chart-svg{width:100%;height:auto;display:block}
+  .bar{transform-box:fill-box;transform-origin:bottom;transform:scaleY(0)}
+  .in-view .bar{animation:grow .9s cubic-bezier(.2,.7,.2,1) forwards}
+  .in-view .bar:nth-child(1){animation-delay:.05s}
+  .in-view .bar:nth-child(2){animation-delay:.13s}
+  .in-view .bar:nth-child(3){animation-delay:.21s}
+  .in-view .bar:nth-child(4){animation-delay:.29s}
+  .in-view .bar:nth-child(5){animation-delay:.37s}
+  .in-view .bar:nth-child(6){animation-delay:.45s}
+  .in-view .bar:nth-child(7){animation-delay:.53s}
+  @keyframes grow{to{transform:scaleY(1)}}
+  .trend{
+    fill:none;stroke:url(#og);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:520;stroke-dashoffset:520;
+  }
+  .in-view .trend{animation:draw 1.3s .5s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .arrow-head{opacity:0}
+  .in-view .arrow-head{animation:pop .35s 1.55s forwards}
+  @keyframes pop{to{opacity:1}}
+
+  /* ---------- generic section ---------- */
+  section.block{padding:96px 0;position:relative;z-index:1}
+  .rule{height:1px;background:var(--navy-line);opacity:.6;max-width:var(--maxw);margin:0 auto}
+
+  /* audiences */
+  .aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
+  .aud{
+    border:1px solid var(--navy-line);border-radius:18px;padding:30px 26px 32px;
+    background:linear-gradient(180deg,rgba(14,39,73,.4),rgba(10,28,54,0));
+    transition:transform .25s ease,border-color .25s ease;
+  }
+  .aud:hover{transform:translateY(-4px);border-color:#2b527f}
+  .aud .num{font-size:13px;font-weight:700;color:var(--orange);letter-spacing:.1em}
+  .aud h3{font-size:20px;font-weight:800;margin:14px 0 10px;letter-spacing:-.01em}
+  .aud p{color:var(--slate);font-size:15px;line-height:1.6}
+
+  /* services */
+  .srv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:52px;
+    border:1px solid var(--navy-line);border-radius:20px;overflow:hidden;background:var(--navy-line)}
+  .srv{
+    background:var(--navy-900);padding:36px 34px;
+    transition:background .3s ease;position:relative;
+  }
+  .srv:hover{background:var(--navy-850)}
+  .srv .ico{
+    width:46px;height:46px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(242,106,33,.12);border:1px solid rgba(242,106,33,.28);margin-bottom:20px;
+  }
+  .srv .ico svg{width:24px;height:24px;stroke:var(--orange);fill:none;stroke-width:1.9}
+  .srv h3{font-size:20px;font-weight:800;letter-spacing:-.01em}
+  .srv p{color:var(--slate);font-size:15px;margin-top:10px;line-height:1.6;max-width:40ch}
+
+  /* how we work */
+  .work-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;margin-top:8px}
+  .work-list{display:flex;flex-direction:column;gap:2px;margin-top:44px;
+    border-top:1px solid var(--navy-line)}
+  .work-item{padding:26px 4px;border-bottom:1px solid var(--navy-line);display:flex;gap:22px;align-items:flex-start}
+  .work-item .k{color:var(--orange);font-weight:800;font-size:14px;letter-spacing:.16em;flex:none;width:34px;padding-top:2px}
+  .work-item h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
+  .work-item p{color:var(--slate);font-size:15px;margin-top:6px;line-height:1.6}
+
+  /* CTA band */
+  .cta-band{
+    margin:0 auto;max-width:var(--maxw);
+    background:linear-gradient(120deg,var(--orange),var(--orange-2));
+    border-radius:26px;padding:64px 56px;
+    display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;
+    position:relative;overflow:hidden;
+  }
+  .cta-band::after{
+    content:"";position:absolute;right:-60px;bottom:-90px;width:340px;height:340px;
+    background:radial-gradient(circle,rgba(255,255,255,.18),transparent 65%);
+  }
+  .cta-band h2{font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-.02em;color:#fff;line-height:1.05;max-width:16ch;position:relative}
+  .cta-band p{color:rgba(255,255,255,.9);margin-top:14px;font-size:17px;max-width:34ch;position:relative}
+  .cta-band .btn-white{background:#0A1C36;color:#fff;position:relative}
+  .cta-band .btn-white:hover{transform:translateY(-2px);box-shadow:0 16px 34px -10px rgba(0,0,0,.6)}
+
+  /* footer */
+  footer{padding:70px 0 40px;border-top:1px solid var(--navy-line);margin-top:96px;position:relative;z-index:1}
+  .foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start}
+  .foot-brand{max-width:320px}
+  .foot-brand .brand{font-size:22px;margin-bottom:14px}
+  .foot-brand p{color:var(--slate);font-size:14.5px;line-height:1.6}
+  .foot-col h4{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--slate-dim);margin-bottom:16px;font-weight:700}
+  .foot-col a{display:flex;align-items:center;gap:9px;color:var(--ice);font-size:15px;margin-bottom:12px;transition:color .2s}
+  .foot-col a:hover{color:var(--orange)}
+  .foot-col a svg{width:17px;height:17px;flex:none}
+  .foot-bottom{margin-top:54px;padding-top:24px;border-top:1px solid var(--navy-line);
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--slate-dim);font-size:13px}
+
+  /* floating whatsapp */
+  .wa-float{
+    position:fixed;right:22px;bottom:22px;z-index:60;
+    width:58px;height:58px;border-radius:50%;
+    background:var(--orange);display:flex;align-items:center;justify-content:center;
+    box-shadow:0 14px 30px -8px rgba(242,106,33,.75);
+    transition:transform .2s ease;
+  }
+  .wa-float:hover{transform:scale(1.08)}
+  .wa-float svg{width:30px;height:30px;fill:#fff}
+  .wa-float::after{
+    content:"";position:absolute;inset:0;border-radius:50%;
+    border:2px solid var(--orange);animation:ping 2.4s ease-out infinite;
+  }
+  @keyframes ping{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.6);opacity:0}}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:44px}
+    .chart-card{order:2}
+    .aud-grid{grid-template-columns:1fr}
+    .srv-grid{grid-template-columns:1fr}
+    .work-grid{grid-template-columns:1fr;gap:8px}
+    .nav-links a.link{display:none}
+    .cta-band{padding:44px 30px}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 20px}
+    .hero{padding:120px 0 70px}
+    .hero-cta{flex-direction:column;align-items:stretch}
+    .hero-cta .btn{justify-content:center}
+    .nav-cta .btn{padding:10px 16px}
+    section.block{padding:74px 0}
+    .cta-band{flex-direction:column;align-items:flex-start}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    .bar{transform:scaleY(1)}
+    .trend{stroke-dashoffset:0}
+    .arrow-head{opacity:1}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand" aria-label="Tardivo Marketing">
+      <img src="logo.png" alt="Tardivo Marketing" class="brand-logo">
+    </a>
+    <nav class="nav-links">
+      <a class="link" href="#servicos">Serviços</a>
+      <a class="link" href="#para-quem">Para quem</a>
+      <a class="link" href="#contato">Contato</a>
+      <a class="nav-cta btn btn-wa" href="https://wa.me/5521978757016" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.5-.7-2.5-1.3-3.5-3-.3-.5.3-.4.7-1.4.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5.1-.8.4s-1 1-1 2.4 1.1 2.8 1.2 3c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.7L7 20.4A10 10 0 1012 2z"/></svg>
+        WhatsApp
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow reveal">Tráfego pago · Sites · Redes sociais</span>
+      <h1 class="reveal" style="transition-delay:.06s">Mais visibilidade.<br><span class="accent">Mais orçamentos.</span></h1>
+      <p class="lead reveal" style="transition-delay:.12s">
+        Somos a Tardivo Marketing. Estruturamos a captação de clientes de PMEs, negócios locais
+        e profissionais de todo o Brasil — do primeiro clique ao orçamento caindo no seu WhatsApp.
+      </p>
+      <div class="hero-cta reveal" style="transition-delay:.18s">
+        <a class="btn btn-wa btn-lg" href="https://wa.me/5521978757016" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.5-.7-2.5-1.3-3.5-3-.3-.5.3-.4.7-1.4.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5.1-.8.4s-1 1-1 2.4 1.1 2.8 1.2 3c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.7L7 20.4A10 10 0 1012 2z"/></svg>
+          Falar no WhatsApp
+        </a>
+        <a class="btn btn-ghost btn-lg" href="https://instagram.com/tardivomarketing" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
+          Ver no Instagram
+        </a>
+      </div>
+      <div class="hero-meta reveal" style="transition-delay:.24s">
+        <div class="item"><b>Google & Meta Ads</b><small>otimização diária</small></div>
+        <div class="item"><b>Sites que convertem</b><small>rápidos e testados</small></div>
+        <div class="item"><b>Atendimento próximo</b><small>direto no WhatsApp</small></div>
+      </div>
+    </div>
+
+    <!-- SIGNATURE: growth chart -->
+    <div class="chart-card reveal" id="chart" style="transition-delay:.1s">
+      <div class="tag">
+        <small>Orçamentos / mês</small>
+        <b>▲ em alta</b>
+      </div>
+      <svg class="chart-svg" viewBox="0 0 460 300" role="img" aria-label="Gráfico de crescimento de orçamentos">
+        <defs>
+          <linearGradient id="og" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stop-color="#F26A21"/>
+            <stop offset="1" stop-color="#F7941D"/>
+          </linearGradient>
+        </defs>
+        <!-- baseline -->
+        <line x1="14" y1="262" x2="446" y2="262" stroke="#1C3A63" stroke-width="1.5"/>
+        <!-- bars ascending -->
+        <rect class="bar" x="30"  y="212" width="34" height="50"  rx="4" fill="#1F4470"/>
+        <rect class="bar" x="86"  y="188" width="34" height="74"  rx="4" fill="#245485"/>
+        <rect class="bar" x="142" y="170" width="34" height="92"  rx="4" fill="#2A639B"/>
+        <rect class="bar" x="198" y="140" width="34" height="122" rx="4" fill="#2F72B0"/>
+        <rect class="bar" x="254" y="118" width="34" height="144" rx="4" fill="#F7941D"/>
+        <rect class="bar" x="310" y="86"  width="34" height="176" rx="4" fill="#F58021"/>
+        <rect class="bar" x="366" y="52"  width="34" height="210" rx="4" fill="#F26A21"/>
+        <!-- trend line + arrow -->
+        <path class="trend" d="M40 224 L104 200 L160 180 L216 150 L272 126 L328 96 L392 60 L438 30"/>
+        <g class="arrow-head">
+          <path d="M438 30 L416 34 M438 30 L432 52" fill="none" stroke="#F7941D" stroke-width="4" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="rule"></div>
+
+<!-- PARA QUEM -->
+<section class="block" id="para-quem">
+  <div class="wrap">
+    <span class="eyebrow reveal">Para quem trabalhamos</span>
+    <h2 class="section-title reveal" style="transition-delay:.06s">Feito para quem precisa vender mais — e com previsibilidade.</h2>
+    <div class="aud-grid">
+      <div class="aud reveal">
+        <div class="num">PME</div>
+        <h3>Pequenas e médias empresas</h3>
+        <p>Negócios de todo o Brasil prontos para escalar vendas e organizar de vez a captação de clientes.</p>
+      </div>
+      <div class="aud reveal" style="transition-delay:.1s">
+        <div class="num">LOCAL</div>
+        <h3>Negócios locais</h3>
+        <p>Clínicas, escritórios e lojas que vivem de aparecer no Google e atrair quem está por perto.</p>
+      </div>
+      <div class="aud reveal" style="transition-delay:.2s">
+        <div class="num">PRO</div>
+        <h3>Profissionais e especialistas</h3>
+        <p>Landing pages e tráfego para lançar infoprodutos e captar leads realmente qualificados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="block" id="servicos">
+  <div class="wrap">
+    <span class="eyebrow reveal">O que fazemos</span>
+    <h2 class="section-title reveal" style="transition-delay:.06s">Da estratégia ao clique que vira orçamento.</h2>
+    <div class="srv-grid">
+      <div class="srv reveal">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
+        <h3>Tráfego pago</h3>
+        <p>Campanhas no Google e no Meta criadas, otimizadas e acompanhadas todos os dias, com foco em custo por resultado.</p>
+      </div>
+      <div class="srv reveal" style="transition-delay:.08s">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/></svg></div>
+        <h3>Sites e landing pages</h3>
+        <p>Páginas rápidas, testadas em velocidade e conversão, feitas para transformar visitas em contato de verdade.</p>
+      </div>
+      <div class="srv reveal" style="transition-delay:.16s">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-8.5 8.5A8.4 8.4 0 014 11.5 8.4 8.4 0 0112.5 3 8.4 8.4 0 0121 11.5z"/><path d="M8 21l1-3"/><circle cx="12" cy="11" r="3"/></svg></div>
+        <h3>Redes sociais</h3>
+        <p>Calendário editorial e publicações que mantêm sua marca viva, presente e reconhecida no Instagram.</p>
+      </div>
+      <div class="srv reveal" style="transition-delay:.24s">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.2-7-10a7 7 0 0114 0c0 4.8-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg></div>
+        <h3>Google Meu Negócio</h3>
+        <p>Seu negócio configurado para aparecer no topo das buscas locais, pronto para receber ligações e mensagens.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO TRABALHAMOS -->
+<section class="block" id="como">
+  <div class="wrap work-grid">
+    <div class="reveal">
+      <span class="eyebrow">Como trabalhamos</span>
+      <h2 class="section-title">Perto do seu negócio, não só das suas campanhas.</h2>
+      <p class="lead">Estratégia clara, metas alinhadas e uma comunicação que responde no ritmo do dia a dia.</p>
+    </div>
+    <div class="work-list reveal" style="transition-delay:.1s">
+      <div class="work-item">
+        <span class="k">01</span>
+        <div>
+          <h3>Atendimento consultivo e estratégico</h3>
+          <p>Reuniões periódicas para alinhar metas e ler o cenário comercial do seu negócio.</p>
+        </div>
+      </div>
+      <div class="work-item">
+        <span class="k">02</span>
+        <div>
+          <h3>Suporte ágil no dia a dia</h3>
+          <p>Comunicação direta e próxima pelo WhatsApp ou Slack para o que não pode esperar.</p>
+        </div>
+      </div>
+      <div class="work-item">
+        <span class="k">03</span>
+        <div>
+          <h3>Otimização contínua</h3>
+          <p>Campanhas ajustadas todos os dias e páginas testadas para melhorar sempre a conversão.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="block" id="contato">
+  <div class="wrap" style="padding:0;">
+    <div class="cta-band reveal">
+      <div>
+        <h2>Vamos aumentar seus orçamentos?</h2>
+        <p>Chame no WhatsApp e receba um diagnóstico rápido do seu negócio, sem compromisso.</p>
+      </div>
+        <a class="btn btn-white btn-lg" href="https://wa.me/5521978757016" target="_blank" rel="noopener" style="z-index:50"> Falar no WhatsApp <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.5-.7-2.5-1.3-3.5-3-.3-.5.3-.4.7-1.4.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5.1-.8.4s-1 1-1 2.4 1.1 2.8 1.2 3c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.7L7 20.4A10 10 0 1012 2z"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <div class="brand">
+            <a href="#top" class="brand" aria-label="Tardivo Marketing">
+      <img src="logo.png" alt="Tardivo Marketing" class="brand-logo">
+    </a>
+      </div>
+      <p>Mais visibilidade. Mais orçamentos. Agência de marketing digital com base no Rio de Janeiro, atendendo negócios de todo o Brasil.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Fale com a gente</h4>
+      <a href="https://wa.me/5521978757016" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="var(--orange)" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.5-.7-2.5-1.3-3.5-3-.3-.5.3-.4.7-1.4.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5.1-.8.4s-1 1-1 2.4 1.1 2.8 1.2 3c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.7L7 20.4A10 10 0 1012 2z"/></svg>
+        (21) 97875-7016
+      </a>
+      <a href="https://instagram.com/tardivomarketing" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="var(--orange)" stroke="none"/></svg>
+        @tardivomarketing
+      </a>
+    </div>
+    <div class="foot-col">
+      <h4>Navegar</h4>
+      <a href="#servicos">Serviços</a>
+      <a href="#para-quem">Para quem</a>
+      <a href="#como">Como trabalhamos</a>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© <span id="year"></span> Tardivo Marketing · Rio de Janeiro, Brasil</span>
+    <span>Mais visibilidade. Mais orçamentos.</span>
+  </div>
+</footer>
+
+<!-- floating whatsapp -->
+<a class="wa-float" href="https://wa.me/5521978757016" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.5-.7-2.5-1.3-3.5-3-.3-.5.3-.4.7-1.4.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5.1-.8.4s-1 1-1 2.4 1.1 2.8 1.2 3c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.7L7 20.4A10 10 0 1012 2z"/></svg>
+</a>
+
+<script>
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // nav shadow on scroll
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 12);
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.14, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // trigger chart animation when in view
+  const chart = document.getElementById('chart');
+  const cio = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ chart.classList.add('in-view'); cio.unobserve(chart);} });
+  }, {threshold:.3});
+  cio.observe(chart);
+</script>
+</body>
+</html>
