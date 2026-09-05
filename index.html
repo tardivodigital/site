@@ -1,544 +1,697 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MJ2672N9');</script>
-<!-- End Google Tag Manager -->
-  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tardivo Marketing — Mais visibilidade. Mais orçamentos.</title>
 <meta name="description" content="Agência de marketing no Rio de Janeiro. Tráfego pago, sites, landing pages e redes sociais para PMEs, negócios locais e profissionais de todo o Brasil.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy-900:#0A1C36;
-    --navy-850:#0C2140;
-    --navy-800:#0E2749;
-    --navy-line:#1C3A63;
-    --orange:#F26A21;
-    --orange-2:#F7941D;
-    --ice:#EEF3FA;
-    --slate:#93A6C4;
-    --slate-dim:#6E82A3;
-    --maxw:1160px;
+    --navy-900:#080B24;
+    --navy-800:#0D1240;
+    --navy-700:#141B54;
+    --navy-line:rgba(255,255,255,0.08);
+    --orange-500:#FF6A1A;
+    --orange-400:#FF8A42;
+    --orange-100:#FFD9BE;
+    --ink-0:#F6F6FB;
+    --ink-1:#B7BBDB;
+    --ink-2:#7D82AC;
+    --success:#3ED598;
+    --radius-l:20px;
+    --radius-m:14px;
+    --radius-s:9px;
+    --maxw:1180px;
   }
-
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
   body{
+    margin:0;
     background:var(--navy-900);
-    color:var(--ice);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
-    line-height:1.5;
+    color:var(--ink-0);
+    font-family:'Inter',sans-serif;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
-  a{color:inherit;text-decoration:none}
-  ::selection{background:var(--orange);color:#fff}
+  h1,h2,h3,.disp{font-family:'Space Grotesk',sans-serif;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  section{position:relative;}
+  ::selection{background:var(--orange-500);color:#0a0a0a;}
+  :focus-visible{outline:2px solid var(--orange-400);outline-offset:3px;border-radius:4px;}
 
-  /* radial atmosphere */
-  body::before{
-    content:"";
-    position:fixed;inset:0;z-index:0;pointer-events:none;
-    background:
-      radial-gradient(900px 600px at 78% -8%, rgba(242,106,33,.16), transparent 60%),
-      radial-gradient(1100px 800px at 8% 12%, rgba(28,58,99,.55), transparent 55%);
+  /* background texture: faint rising-line grid, nods to "growth" theme without being a generic gradient blob */
+  .bg-grid{
+    position:absolute;inset:0;pointer-events:none;
+    background-image:
+      linear-gradient(var(--navy-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--navy-line) 1px, transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:linear-gradient(to bottom, black, transparent 85%);
+            mask-image:linear-gradient(to bottom, black, transparent 85%);
+    opacity:.5;
   }
 
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(8,11,36,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--navy-line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;max-width:var(--maxw);margin:0 auto;
+  }
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand img{height:36px;width:auto;}
+  .nav-links{display:flex;align-items:center;gap:32px;}
+  .nav-links a{font-size:14.5px;color:var(--ink-1);transition:color .2s;}
+  .nav-links a:hover{color:var(--ink-0);}
+  .nav-cta{
+    background:var(--orange-500);color:#0a0a0a;font-weight:600;
+    padding:10px 20px;border-radius:100px;font-size:14px;
+    transition:transform .15s ease, background .2s;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--orange-400);transform:translateY(-1px);}
+  .nav-toggle{display:none;background:none;border:none;color:var(--ink-0);width:30px;height:30px;cursor:pointer;}
+  @media(max-width:840px){
+    .nav-links a:not(.nav-cta){display:none;}
+    .nav-cta{padding:9px 16px;font-size:13.5px;}
+  }
 
-  /* ---------- shared type devices ---------- */
+  /* ---------- HERO ---------- */
+  .hero{padding:88px 0 72px;overflow:hidden;}
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;
+  }
   .eyebrow{
-    display:inline-flex;align-items:center;gap:14px;
-    font-size:12px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
-    color:var(--orange);
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.06em;
+    color:var(--orange-400);text-transform:uppercase;margin-bottom:20px;
   }
-  .eyebrow::before{
-    content:"";width:26px;height:2px;background:var(--orange);display:inline-block;
-    border-radius:2px;
+  .eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--orange-500);box-shadow:0 0 0 4px rgba(255,106,26,.18);}
+  h1.headline{
+    font-size:clamp(34px,5.2vw,58px);line-height:1.03;font-weight:700;
+    letter-spacing:-.02em;margin:0 0 20px;
   }
-  .eyebrow.slate{color:var(--slate)}
-  .eyebrow.slate::before{background:var(--orange)}
-
-  h2.section-title{
-    font-size:clamp(28px,4.4vw,46px);
-    font-weight:800;letter-spacing:-.02em;line-height:1.05;
-    margin:20px 0 0;max-width:16ch;
-  }
-  .lead{color:var(--slate);font-size:clamp(15px,1.7vw,18px);max-width:52ch;margin-top:16px}
-
-  /* ---------- nav ---------- */
-  header.nav{
-    position:fixed;top:0;left:0;right:0;z-index:50;
-    backdrop-filter:blur(12px);
-    background:rgba(10,28,54,.72);
-    border-bottom:1px solid transparent;
-    transition:border-color .3s ease, background .3s ease;
-  }
-  header.nav.scrolled{border-bottom-color:var(--navy-line);background:rgba(9,25,48,.9)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.01em;font-size:19px}
-  .brand .mark{display:flex;align-items:flex-end;gap:2.5px;height:20px}
-  .brand .mark i{width:4px;background:var(--slate-dim);border-radius:1px;display:block}
-  .brand .mark i:nth-child(1){height:8px}
-  .brand .mark i:nth-child(2){height:13px}
-  .brand .mark i:nth-child(3){height:20px;background:var(--orange)}
-  .brand b{font-weight:800}
-  .brand span{color:var(--orange)}
-  .brand-logo{height:46px;width:auto;display:block}
-  @media(max-width:560px){.brand-logo{height:40px}}
-  .nav-links{display:flex;align-items:center;gap:34px}
-  .nav-links a.link{font-size:14px;color:var(--slate);font-weight:500;transition:color .2s}
-  .nav-links a.link:hover{color:var(--ice)}
-
+  h1.headline .accent{color:var(--orange-500);}
+  .hero p.sub{font-size:17px;line-height:1.6;color:var(--ink-1);max-width:520px;margin:0 0 30px;}
+  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:34px;}
   .btn{
-    display:inline-flex;align-items:center;gap:9px;
-    font-weight:700;font-size:14.5px;
-    padding:11px 20px;border-radius:999px;
-    transition:transform .18s ease, box-shadow .25s ease, background .25s ease;
-    white-space:nowrap;cursor:pointer;border:0;
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 24px;border-radius:100px;font-weight:600;font-size:15px;
+    transition:transform .15s ease, background .2s, border-color .2s;
+    border:1px solid transparent;cursor:pointer;
   }
-  .btn svg{width:17px;height:17px;flex:none}
-  .btn-wa{background:var(--orange);color:#fff;box-shadow:0 8px 22px -8px rgba(242,106,33,.7)}
-  .btn-wa:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(242,106,33,.85)}
-  .btn-ghost{background:transparent;color:var(--ice);border:1px solid var(--navy-line)}
-  .btn-ghost:hover{border-color:var(--slate);transform:translateY(-2px)}
-  .btn-lg{padding:15px 28px;font-size:16px}
+  .btn-primary{background:var(--orange-500);color:#0a0a0a;}
+  .btn-primary:hover{background:var(--orange-400);transform:translateY(-2px);}
+  .btn-ghost{background:transparent;border-color:var(--navy-line);color:var(--ink-0);}
+  .btn-ghost:hover{border-color:var(--ink-2);}
+  .btn svg{width:18px;height:18px;}
 
-  .nav-cta{display:inline-flex}
-
-  /* ---------- hero ---------- */
-  .hero{padding:150px 0 90px}
-  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
-  .hero h1{
-    font-size:clamp(38px,6.4vw,74px);
-    font-weight:800;line-height:1.02;letter-spacing:-.03em;
-    margin:22px 0 0;
+  .authority{
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    padding-top:22px;border-top:1px solid var(--navy-line);
   }
-  .hero h1 .accent{color:var(--orange)}
-  .hero p.lead{margin-top:22px;max-width:46ch}
-  .hero-cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
-  .hero-meta{display:flex;gap:30px;margin-top:40px;flex-wrap:wrap}
-  .hero-meta .item{display:flex;flex-direction:column;gap:2px}
-  .hero-meta .item b{font-size:15px;font-weight:700;color:var(--ice)}
-  .hero-meta .item small{font-size:12.5px;color:var(--slate-dim);letter-spacing:.02em}
+  .authority-label{font-size:12.5px;color:var(--ink-2);}
+  .badge{
+    display:inline-flex;align-items:center;gap:7px;
+    background:var(--navy-800);border:1px solid var(--navy-line);
+    padding:7px 13px 7px 9px;border-radius:100px;font-size:13.5px;font-weight:600;
+  }
+  .badge svg{width:16px;height:16px;flex-shrink:0;}
 
-  /* signature growth chart */
-  .chart-card{
-    position:relative;
-    background:linear-gradient(160deg,var(--navy-850),var(--navy-800));
+  /* Signature element: live "orçamentos" counter card */
+  .stat-card{
+    background:linear-gradient(160deg,var(--navy-800),var(--navy-700));
     border:1px solid var(--navy-line);
-    border-radius:22px;
-    padding:30px 30px 26px;
-    box-shadow:0 30px 60px -30px rgba(0,0,0,.8);
+    border-radius:var(--radius-l);
+    padding:28px 26px;
+    position:relative;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
   }
-  .chart-card .tag{
-    display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;
+  .stat-card::after{
+    content:'';position:absolute;top:-1px;left:24px;right:24px;height:2px;
+    background:linear-gradient(90deg,transparent,var(--orange-500),transparent);
   }
-  .chart-card .tag small{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--slate-dim);font-weight:700}
-  .chart-card .tag b{font-size:13px;color:var(--orange);font-weight:700}
-  .chart-svg{width:100%;height:auto;display:block}
-  .bar{transform-box:fill-box;transform-origin:bottom;transform:scaleY(0)}
-  .in-view .bar{animation:grow .9s cubic-bezier(.2,.7,.2,1) forwards}
-  .in-view .bar:nth-child(1){animation-delay:.05s}
-  .in-view .bar:nth-child(2){animation-delay:.13s}
-  .in-view .bar:nth-child(3){animation-delay:.21s}
-  .in-view .bar:nth-child(4){animation-delay:.29s}
-  .in-view .bar:nth-child(5){animation-delay:.37s}
-  .in-view .bar:nth-child(6){animation-delay:.45s}
-  .in-view .bar:nth-child(7){animation-delay:.53s}
-  @keyframes grow{to{transform:scaleY(1)}}
-  .trend{
-    fill:none;stroke:url(#og);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;
-    stroke-dasharray:520;stroke-dashoffset:520;
+  .stat-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;}
+  .stat-top-label{font-size:13px;color:var(--ink-1);max-width:150px;line-height:1.4;}
+  .trend-pill{
+    display:flex;align-items:center;gap:5px;background:rgba(62,213,152,.12);
+    color:var(--success);font-size:12px;font-weight:600;padding:5px 10px;border-radius:100px;
   }
-  .in-view .trend{animation:draw 1.3s .5s cubic-bezier(.2,.7,.2,1) forwards}
-  @keyframes draw{to{stroke-dashoffset:0}}
-  .arrow-head{opacity:0}
-  .in-view .arrow-head{animation:pop .35s 1.55s forwards}
-  @keyframes pop{to{opacity:1}}
+  .stat-number{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:52px;line-height:1;color:var(--ink-0);margin-bottom:6px;}
+  .stat-number span{color:var(--orange-500);}
+  .stat-sub{font-size:12.5px;color:var(--ink-2);margin-bottom:20px;}
+  .spark{width:100%;height:52px;}
+  .spark path{stroke:var(--orange-500);}
 
-  /* ---------- generic section ---------- */
-  section.block{padding:96px 0;position:relative;z-index:1}
-  .rule{height:1px;background:var(--navy-line);opacity:.6;max-width:var(--maxw);margin:0 auto}
-
-  /* audiences */
-  .aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
-  .aud{
-    border:1px solid var(--navy-line);border-radius:18px;padding:30px 26px 32px;
-    background:linear-gradient(180deg,rgba(14,39,73,.4),rgba(10,28,54,0));
-    transition:transform .25s ease,border-color .25s ease;
+  /* ---------- SECTION HEADERS ---------- */
+  .section-head{max-width:620px;margin-bottom:44px;}
+  .kicker{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ink-2);margin-bottom:10px;display:block;
   }
-  .aud:hover{transform:translateY(-4px);border-color:#2b527f}
-  .aud .num{font-size:13px;font-weight:700;color:var(--orange);letter-spacing:.1em}
-  .aud h3{font-size:20px;font-weight:800;margin:14px 0 10px;letter-spacing:-.01em}
-  .aud p{color:var(--slate);font-size:15px;line-height:1.6}
+  .section-head h2{font-size:clamp(24px,3.2vw,34px);line-height:1.2;font-weight:600;margin:0;letter-spacing:-.01em;}
+  .section-head h2 .accent{color:var(--orange-500);}
+  section.pad{padding:88px 0;}
+  .divider{height:1px;background:var(--navy-line);}
 
-  /* services */
-  .srv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:52px;
-    border:1px solid var(--navy-line);border-radius:20px;overflow:hidden;background:var(--navy-line)}
-  .srv{
-    background:var(--navy-900);padding:36px 34px;
-    transition:background .3s ease;position:relative;
+  /* ---------- PARA QUEM ---------- */
+  .audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .audience-card{
+    background:var(--navy-800);border:1px solid var(--navy-line);border-radius:var(--radius-m);
+    padding:28px 24px;transition:border-color .2s, transform .2s;
   }
-  .srv:hover{background:var(--navy-850)}
-  .srv .ico{
-    width:46px;height:46px;border-radius:12px;
-    display:flex;align-items:center;justify-content:center;
-    background:rgba(242,106,33,.12);border:1px solid rgba(242,106,33,.28);margin-bottom:20px;
+  .audience-card:hover{border-color:rgba(255,106,26,.4);transform:translateY(-3px);}
+  .audience-tag{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.06em;
+    color:var(--orange-400);border:1px solid rgba(255,106,26,.3);
+    display:inline-block;padding:3px 9px;border-radius:5px;margin-bottom:16px;
   }
-  .srv .ico svg{width:24px;height:24px;stroke:var(--orange);fill:none;stroke-width:1.9}
-  .srv h3{font-size:20px;font-weight:800;letter-spacing:-.01em}
-  .srv p{color:var(--slate);font-size:15px;margin-top:10px;line-height:1.6;max-width:40ch}
+  .audience-card h3{font-size:19px;margin:0 0 8px;font-weight:600;}
+  .audience-card p{font-size:14.5px;color:var(--ink-1);line-height:1.55;margin:0;}
 
-  /* how we work */
-  .work-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;margin-top:8px}
-  .work-list{display:flex;flex-direction:column;gap:2px;margin-top:44px;
-    border-top:1px solid var(--navy-line)}
-  .work-item{padding:26px 4px;border-bottom:1px solid var(--navy-line);display:flex;gap:22px;align-items:flex-start}
-  .work-item .k{color:var(--orange);font-weight:800;font-size:14px;letter-spacing:.16em;flex:none;width:34px;padding-top:2px}
-  .work-item h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
-  .work-item p{color:var(--slate);font-size:15px;margin-top:6px;line-height:1.6}
-
-  /* CTA band */
-  .cta-band{
-    margin:0 auto;max-width:var(--maxw);
-    background:linear-gradient(120deg,var(--orange),var(--orange-2));
-    border-radius:26px;padding:64px 56px;
-    display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;
-    position:relative;overflow:hidden;
+  /* ---------- SERVICES ---------- */
+  .services-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:auto auto;gap:18px;}
+  .svc-card{
+    background:var(--navy-800);border:1px solid var(--navy-line);border-radius:var(--radius-m);
+    padding:26px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s, transform .2s;
   }
-  .cta-band::after{
-    content:"";position:absolute;right:-60px;bottom:-90px;width:340px;height:340px;
-    background:radial-gradient(circle,rgba(255,255,255,.18),transparent 65%);
+  .svc-card:hover{transform:translateY(-3px);border-color:rgba(255,106,26,.35);}
+  .svc-card.primary{
+    grid-row:span 2;
+    background:linear-gradient(165deg,var(--navy-700),var(--navy-800) 60%);
+    border-color:rgba(255,106,26,.35);
+    justify-content:space-between;
   }
-  .cta-band h2{font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-.02em;color:#fff;line-height:1.05;max-width:16ch;position:relative}
-  .cta-band p{color:rgba(255,255,255,.9);margin-top:14px;font-size:17px;max-width:34ch;position:relative}
-  .cta-band .btn-white{background:#0A1C36;color:#fff;position:relative}
-  .cta-band .btn-white:hover{transform:translateY(-2px);box-shadow:0 16px 34px -10px rgba(0,0,0,.6)}
-
-  /* footer */
-  footer{padding:70px 0 40px;border-top:1px solid var(--navy-line);margin-top:96px;position:relative;z-index:1}
-  .foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start}
-  .foot-brand{max-width:320px}
-  .foot-brand .brand{font-size:22px;margin-bottom:14px}
-  .foot-brand p{color:var(--slate);font-size:14.5px;line-height:1.6}
-  .foot-col h4{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--slate-dim);margin-bottom:16px;font-weight:700}
-  .foot-col a{display:flex;align-items:center;gap:9px;color:var(--ice);font-size:15px;margin-bottom:12px;transition:color .2s}
-  .foot-col a:hover{color:var(--orange)}
-  .foot-col a svg{width:17px;height:17px;flex:none}
-  .foot-bottom{margin-top:54px;padding-top:24px;border-top:1px solid var(--navy-line);
-    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--slate-dim);font-size:13px}
-
-  /* floating whatsapp */
-  .wa-float{
-    position:fixed;right:22px;bottom:22px;z-index:60;
-    width:58px;height:58px;border-radius:50%;
-    background:var(--orange);display:flex;align-items:center;justify-content:center;
-    box-shadow:0 14px 30px -8px rgba(242,106,33,.75);
-    transition:transform .2s ease;
+  .svc-icon{
+    width:42px;height:42px;border-radius:11px;background:var(--navy-700);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
   }
-  .wa-float:hover{transform:scale(1.08)}
-  .wa-float svg{width:30px;height:30px;fill:#fff}
-  .wa-float::after{
-    content:"";position:absolute;inset:0;border-radius:50%;
-    border:2px solid var(--orange);animation:ping 2.4s ease-out infinite;
+  .svc-card.primary .svc-icon{background:var(--orange-500);}
+  .svc-icon svg{width:22px;height:22px;color:var(--orange-400);}
+  .svc-card.primary .svc-icon svg{color:#0a0a0a;}
+  .svc-card h3{font-size:18px;margin:0;font-weight:600;}
+  .svc-card p{font-size:14px;color:var(--ink-1);line-height:1.55;margin:0;}
+  .svc-tag{
+    align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:11px;
+    color:var(--orange-400);letter-spacing:.05em;text-transform:uppercase;
   }
-  @keyframes ping{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.6);opacity:0}}
-
-  /* reveal */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
-  .reveal.in{opacity:1;transform:none}
-
-  /* ---------- responsive ---------- */
   @media(max-width:900px){
-    .hero-grid{grid-template-columns:1fr;gap:44px}
-    .chart-card{order:2}
-    .aud-grid{grid-template-columns:1fr}
-    .srv-grid{grid-template-columns:1fr}
-    .work-grid{grid-template-columns:1fr;gap:8px}
-    .nav-links a.link{display:none}
-    .cta-band{padding:44px 30px}
+    .services-grid{grid-template-columns:1fr 1fr;}
+    .svc-card.primary{grid-column:span 2;grid-row:auto;}
   }
-  @media(max-width:560px){
-    .wrap{padding:0 20px}
-    .hero{padding:120px 0 70px}
-    .hero-cta{flex-direction:column;align-items:stretch}
-    .hero-cta .btn{justify-content:center}
-    .nav-cta .btn{padding:10px 16px}
-    section.block{padding:74px 0}
-    .cta-band{flex-direction:column;align-items:flex-start}
+  @media(max-width:600px){
+    .services-grid{grid-template-columns:1fr;}
+    .svc-card.primary{grid-column:auto;}
   }
 
+  /* ---------- RESULTADOS (prova social) ---------- */
+  .results-band{background:var(--navy-800);border-top:1px solid var(--navy-line);border-bottom:1px solid var(--navy-line);}
+  .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--navy-line);border-radius:var(--radius-m);overflow:hidden;margin-bottom:44px;}
+  .result-cell{background:var(--navy-800);padding:32px 26px;}
+  .result-num{font-family:'IBM Plex Mono',monospace;font-size:38px;font-weight:600;color:var(--orange-500);margin-bottom:6px;}
+  .result-label{font-size:13.5px;color:var(--ink-1);}
+  .result-note{font-size:11.5px;color:var(--ink-2);margin-top:10px;}
+  @media(max-width:760px){.results-grid{grid-template-columns:1fr;}}
+
+  .testimonial{
+    background:var(--navy-700);border:1px solid var(--navy-line);border-radius:var(--radius-m);
+    padding:30px 28px;display:flex;gap:20px;align-items:flex-start;
+  }
+  .testimonial svg{width:26px;flex-shrink:0;color:var(--orange-500);margin-top:2px;}
+  .testimonial p{font-size:16px;line-height:1.6;color:var(--ink-0);margin:0 0 14px;font-style:italic;}
+  .testimonial .who{font-size:13px;color:var(--ink-2);font-style:normal;}
+  .testimonial .who b{color:var(--ink-1);}
+
+  /* ---------- COMO TRABALHAMOS ---------- */
+  .process{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;}
+  .process::before{
+    content:'';position:absolute;top:23px;left:8%;right:8%;height:1px;
+    background:repeating-linear-gradient(90deg,var(--navy-line) 0 8px, transparent 8px 16px);
+    z-index:0;
+  }
+  .step{position:relative;z-index:1;padding:0 20px 0 0;}
+  .step-num{
+    width:46px;height:46px;border-radius:50%;background:var(--navy-900);
+    border:1px solid var(--orange-500);color:var(--orange-400);
+    font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;
+    display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  }
+  .step h3{font-size:17px;margin:0 0 8px;font-weight:600;}
+  .step p{font-size:14px;color:var(--ink-1);line-height:1.6;margin:0;}
+  @media(max-width:760px){
+    .process{grid-template-columns:1fr;gap:32px;}
+    .process::before{display:none;}
+  }
+
+  /* ---------- DIAGNÓSTICO FORM ---------- */
+  .diag{
+    background:linear-gradient(165deg,var(--navy-800),var(--navy-900));
+    border:1px solid var(--navy-line);border-radius:var(--radius-l);
+    padding:44px;display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;
+  }
+  .diag-copy h2{font-size:26px;margin:0 0 14px;font-weight:600;}
+  .diag-copy p{font-size:14.5px;color:var(--ink-1);line-height:1.6;margin:0 0 22px;}
+  .diag-points{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;}
+  .diag-points li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ink-1);}
+  .diag-points svg{width:17px;height:17px;color:var(--success);flex-shrink:0;margin-top:1px;}
+  form{display:grid;gap:14px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  label{font-size:12.5px;color:var(--ink-2);margin-bottom:6px;display:block;}
+  input,select{
+    width:100%;background:var(--navy-900);border:1px solid var(--navy-line);
+    border-radius:var(--radius-s);padding:12px 13px;color:var(--ink-0);font-size:14.5px;
+    font-family:inherit;transition:border-color .2s;
+  }
+  input:focus,select:focus{border-color:var(--orange-500);outline:none;}
+  select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237D82AC' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;}
+  .form-submit{margin-top:6px;justify-self:start;}
+  @media(max-width:760px){
+    .diag{grid-template-columns:1fr;padding:28px;}
+    .form-row{grid-template-columns:1fr;}
+  }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{text-align:center;padding:96px 0;}
+  .cta-final h2{font-size:clamp(26px,4vw,42px);margin:0 0 16px;font-weight:600;letter-spacing:-.01em;}
+  .cta-final p{color:var(--ink-1);font-size:16px;margin:0 0 30px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--navy-line);padding:52px 0 28px;}
+  .footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:36px;}
+  .footer-brand img{height:32px;margin-bottom:14px;}
+  .footer-brand p{font-size:13.5px;color:var(--ink-2);max-width:280px;line-height:1.6;}
+  .footer-cols{display:flex;gap:56px;flex-wrap:wrap;}
+  .footer-col h4{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin:0 0 14px;font-weight:600;}
+  .footer-col a{display:block;font-size:14px;color:var(--ink-1);margin-bottom:10px;transition:color .2s;}
+  .footer-col a:hover{color:var(--orange-400);}
+  .footer-bottom{
+    border-top:1px solid var(--navy-line);padding-top:22px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-size:12.5px;color:var(--ink-2);
+  }
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .float-wa{
+    position:fixed;bottom:22px;right:22px;z-index:60;
+    width:56px;height:56px;border-radius:50%;background:var(--orange-500);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 30px -6px rgba(255,106,26,.55);
+    transition:transform .2s;opacity:0;pointer-events:none;
+  }
+  .float-wa.show{opacity:1;pointer-events:auto;}
+  .float-wa:hover{transform:scale(1.07);}
+  .float-wa svg{width:26px;height:26px;color:#0a0a0a;}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .diag-copy{order:2;}
+  }
   @media(prefers-reduced-motion:reduce){
-    *{animation:none!important;transition:none!important}
-    .reveal{opacity:1;transform:none}
-    .bar{transform:scaleY(1)}
-    .trend{stroke-dashoffset:0}
-    .arrow-head{opacity:1}
-    html{scroll-behavior:auto}
+    html{scroll-behavior:auto;}
+    .reveal{transition:none;opacity:1;transform:none;}
   }
 </style>
 </head>
 <body>
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJ2672N9"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-  
-<!-- NAV -->
-<header class="nav" id="nav">
-  <div class="wrap nav-inner">
-    <a href="#top" class="brand" aria-label="Tardivo Marketing">
-      <img src="logo.png" alt="Tardivo Marketing" class="brand-logo">
+<header>
+  <div class="nav">
+    <a href="#top" class="brand">
+      <img src="https://www.tardivomarketing.com.br/logo.png" alt="Tardivo Marketing">
     </a>
-    <nav class="nav-links">
-      <a class="link" href="#servicos">Serviços</a>
-      <a class="link" href="#para-quem">Para quem</a>
-      <a class="link" href="#contato">Contato</a>
-      <a class="nav-cta btn btn-wa" href="https://wa.me/5521978757016" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.5-.7-2.5-1.3-3.5-3-.3-.5.3-.4.7-1.4.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5.1-.8.4s-1 1-1 2.4 1.1 2.8 1.2 3c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.7L7 20.4A10 10 0 1012 2z"/></svg>
-        WhatsApp
-      </a>
-    </nav>
+    <div class="nav-links">
+      <a href="#servicos">Serviços</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#para-quem">Para quem</a>
+      <a href="#diagnostico">Diagnóstico</a>
+      <a class="nav-cta" href="https://wa.me/5521978757016" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    </div>
   </div>
 </header>
 
-<!-- HERO -->
 <main id="top">
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow reveal">Tráfego pago · Sites · Redes sociais</span>
-      <h1 class="reveal" style="transition-delay:.06s">Mais visibilidade.<br><span class="accent">Mais orçamentos.</span></h1>
-      <p class="lead reveal" style="transition-delay:.12s">
-        Somos a Tardivo Marketing. Estruturamos a captação de clientes de PMEs, negócios locais
-        e profissionais de todo o Brasil — do primeiro clique ao orçamento caindo no seu WhatsApp.
-      </p>
-      <div class="hero-cta reveal" style="transition-delay:.18s">
-        <a class="btn btn-wa btn-lg" href="https://wa.me/5521978757016" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.5-.7-2.5-1.3-3.5-3-.3-.5.3-.4.7-1.4.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5.1-.8.4s-1 1-1 2.4 1.1 2.8 1.2 3c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.7L7 20.4A10 10 0 1012 2z"/></svg>
-          Falar no WhatsApp
-        </a>
-        <a class="btn btn-ghost btn-lg" href="https://instagram.com/tardivomarketing" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
-          Ver no Instagram
-        </a>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="bg-grid"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Tráfego pago · Sites · Redes sociais</span>
+        <h1 class="headline">Mais visibilidade.<br>Mais <span class="accent">orçamentos.</span></h1>
+        <p class="sub">Estruturamos a captação de clientes de PMEs, negócios locais e profissionais de todo o Brasil — do primeiro clique ao orçamento caindo no seu WhatsApp.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="https://wa.me/5521978757016" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.92 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.03c-.24.68-1.4 1.3-1.93 1.37-.5.08-1.11.11-1.79-.11a16 16 0 0 1-1.65-.61c-2.9-1.25-4.79-4.17-4.93-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36l.56.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.5-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.35 1.46.29.15.46.13.63-.08.17-.2.72-.84.91-1.13.19-.29.38-.24.63-.14.26.09 1.65.78 1.93.92.29.14.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
+            Falar no WhatsApp
+          </a>
+          <a class="btn btn-ghost" href="https://instagram.com/tardivomarketing" target="_blank" rel="noopener">
+            Ver no Instagram
+          </a>
+        </div>
+        <div class="authority">
+          <span class="authority-label">Gestão certificada em</span>
+          <span class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+            Google Ads
+          </span>
+          <span class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+            Meta Ads
+          </span>
+        </div>
       </div>
-      <div class="hero-meta reveal" style="transition-delay:.24s">
-        <div class="item"><b>Google & Meta Ads</b><small>otimização diária</small></div>
-        <div class="item"><b>Sites que convertem</b><small>rápidos e testados</small></div>
-        <div class="item"><b>Atendimento próximo</b><small>direto no WhatsApp</small></div>
+
+      <div class="reveal" data-reveal>
+        <div class="stat-card">
+          <div class="stat-top">
+            <span class="stat-top-label">Orçamentos gerados para clientes / mês</span>
+            <span class="trend-pill">▲ em alta</span>
+          </div>
+          <div class="stat-number" data-count="40" data-suffix="+"><span>0</span></div>
+          <div class="stat-sub">Média entre contas ativas nos últimos 90 dias ·</div>
+          <svg class="spark" viewBox="0 0 240 52" preserveAspectRatio="none">
+            <path d="M0 42 L30 38 L60 40 L90 26 L120 30 L150 16 L180 20 L210 8 L240 4" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- SIGNATURE: growth chart -->
-    <div class="chart-card reveal" id="chart" style="transition-delay:.1s">
-      <div class="tag">
-        <small>Orçamentos / mês</small>
-        <b>▲ em alta</b>
-      </div>
-      <svg class="chart-svg" viewBox="0 0 460 300" role="img" aria-label="Gráfico de crescimento de orçamentos">
-        <defs>
-          <linearGradient id="og" x1="0" y1="1" x2="1" y2="0">
-            <stop offset="0" stop-color="#F26A21"/>
-            <stop offset="1" stop-color="#F7941D"/>
-          </linearGradient>
-        </defs>
-        <!-- baseline -->
-        <line x1="14" y1="262" x2="446" y2="262" stroke="#1C3A63" stroke-width="1.5"/>
-        <!-- bars ascending -->
-        <rect class="bar" x="30"  y="212" width="34" height="50"  rx="4" fill="#1F4470"/>
-        <rect class="bar" x="86"  y="188" width="34" height="74"  rx="4" fill="#245485"/>
-        <rect class="bar" x="142" y="170" width="34" height="92"  rx="4" fill="#2A639B"/>
-        <rect class="bar" x="198" y="140" width="34" height="122" rx="4" fill="#2F72B0"/>
-        <rect class="bar" x="254" y="118" width="34" height="144" rx="4" fill="#F7941D"/>
-        <rect class="bar" x="310" y="86"  width="34" height="176" rx="4" fill="#F58021"/>
-        <rect class="bar" x="366" y="52"  width="34" height="210" rx="4" fill="#F26A21"/>
-        <!-- trend line + arrow -->
-        <path class="trend" d="M40 224 L104 200 L160 180 L216 150 L272 126 L328 96 L392 60 L438 30"/>
-        <g class="arrow-head">
-          <path d="M438 30 L416 34 M438 30 L432 52" fill="none" stroke="#F7941D" stroke-width="4" stroke-linecap="round"/>
-        </g>
-      </svg>
-    </div>
-  </div>
-</section>
-</main>
+  <div class="wrap"><div class="divider"></div></div>
 
-<div class="rule"></div>
-
-<!-- PARA QUEM -->
-<section class="block" id="para-quem">
-  <div class="wrap">
-    <span class="eyebrow reveal">Para quem trabalhamos</span>
-    <h2 class="section-title reveal" style="transition-delay:.06s">Feito para quem precisa vender mais — e com previsibilidade.</h2>
-    <div class="aud-grid">
-      <div class="aud reveal">
-        <div class="num">PME</div>
-        <h3>Pequenas e médias empresas</h3>
-        <p>Negócios de todo o Brasil prontos para escalar vendas e organizar de vez a captação de clientes.</p>
+  <!-- PARA QUEM -->
+  <section class="pad" id="para-quem">
+    <div class="wrap">
+      <div class="section-head reveal" data-reveal>
+        <span class="kicker">Para quem trabalhamos</span>
+        <h2>Feito para quem precisa vender mais — e com <span class="accent">previsibilidade.</span></h2>
       </div>
-      <div class="aud reveal" style="transition-delay:.1s">
-        <div class="num">LOCAL</div>
-        <h3>Negócios locais</h3>
-        <p>Clínicas, escritórios e lojas que vivem de aparecer no Google e atrair quem está por perto.</p>
-      </div>
-      <div class="aud reveal" style="transition-delay:.2s">
-        <div class="num">PRO</div>
-        <h3>Profissionais e especialistas</h3>
-        <p>Landing pages e tráfego para lançar infoprodutos e captar leads realmente qualificados.</p>
+      <div class="audience-grid">
+        <div class="audience-card reveal" data-reveal>
+          <span class="audience-tag">PME</span>
+          <h3>Pequenas e médias empresas</h3>
+          <p>Negócios de todo o Brasil prontos para escalar vendas e organizar de vez a captação de clientes.</p>
+        </div>
+        <div class="audience-card reveal" data-reveal>
+          <span class="audience-tag">LOCAL</span>
+          <h3>Negócios locais</h3>
+          <p>Clínicas, escritórios e lojas que vivem de aparecer no Google e atrair quem está por perto.</p>
+        </div>
+        <div class="audience-card reveal" data-reveal>
+          <span class="audience-tag">PRO</span>
+          <h3>Profissionais e especialistas</h3>
+          <p>Landing pages e tráfego para lançar infoprodutos e captar leads realmente qualificados.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- SERVIÇOS -->
-<section class="block" id="servicos">
-  <div class="wrap">
-    <span class="eyebrow reveal">O que fazemos</span>
-    <h2 class="section-title reveal" style="transition-delay:.06s">Da estratégia ao clique que vira orçamento.</h2>
-    <div class="srv-grid">
-      <div class="srv reveal">
-        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
-        <h3>Tráfego pago</h3>
-        <p>Campanhas no Google e no Meta criadas, otimizadas e acompanhadas todos os dias, com foco em custo por resultado.</p>
+  <!-- SERVIÇOS -->
+  <section class="pad" id="servicos">
+    <div class="wrap">
+      <div class="section-head reveal" data-reveal>
+        <span class="kicker">O que fazemos</span>
+        <h2>Da estratégia ao clique que vira <span class="accent">orçamento.</span></h2>
       </div>
-      <div class="srv reveal" style="transition-delay:.08s">
-        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/></svg></div>
-        <h3>Sites e landing pages</h3>
-        <p>Páginas rápidas, testadas em velocidade e conversão, feitas para transformar visitas em contato de verdade.</p>
-      </div>
-      <div class="srv reveal" style="transition-delay:.16s">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-8.5 8.5A8.4 8.4 0 014 11.5 8.4 8.4 0 0112.5 3 8.4 8.4 0 0121 11.5z"/><path d="M8 21l1-3"/><circle cx="12" cy="11" r="3"/></svg></div>
-        <h3>Redes sociais</h3>
-        <p>Calendário editorial e publicações que mantêm sua marca viva, presente e reconhecida no Instagram.</p>
-      </div>
-      <div class="srv reveal" style="transition-delay:.24s">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.2-7-10a7 7 0 0114 0c0 4.8-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg></div>
-        <h3>Google Meu Negócio</h3>
-        <p>Seu negócio configurado para aparecer no topo das buscas locais, pronto para receber ligações e mensagens.</p>
+      <div class="services-grid">
+        <div class="svc-card primary reveal" data-reveal>
+          <div>
+            <div class="svc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>
+            </div>
+          </div>
+          <div>
+            <span class="svc-tag">Serviço principal</span>
+            <h3 style="margin-top:8px;">Tráfego pago</h3>
+            <p>Campanhas no Google e no Meta criadas, otimizadas e acompanhadas todos os dias, com foco em custo por resultado.</p>
+          </div>
+        </div>
+        <div class="svc-card reveal" data-reveal>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Sites e landing pages</h3>
+          <p>Páginas rápidas, testadas em velocidade e conversão, feitas para transformar visitas em contato de verdade.</p>
+        </div>
+        <div class="svc-card reveal" data-reveal>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="3.2"/><circle cx="16.8" cy="7.2" r="1"/></svg>
+          </div>
+          <h3>Redes sociais</h3>
+          <p>Calendário editorial e publicações que mantêm sua marca viva, presente e reconhecida no Instagram.</p>
+        </div>
+        <div class="svc-card reveal" data-reveal>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+          </div>
+          <h3>Google Meu Negócio</h3>
+          <p>Seu negócio configurado para aparecer no topo das buscas locais, pronto para receber ligações e mensagens.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- COMO TRABALHAMOS -->
-<section class="block" id="como">
-  <div class="wrap work-grid">
-    <div class="reveal">
-      <span class="eyebrow">Como trabalhamos</span>
-      <h2 class="section-title">Perto do seu negócio, não só das suas campanhas.</h2>
-      <p class="lead">Estratégia clara, metas alinhadas e uma comunicação que responde no ritmo do dia a dia.</p>
-    </div>
-    <div class="work-list reveal" style="transition-delay:.1s">
-      <div class="work-item">
-        <span class="k">01</span>
+  <!-- RESULTADOS / PROVA SOCIAL -->
+  <section class="results-band pad" id="resultados">
+    <div class="wrap">
+      <div class="section-head reveal" data-reveal>
+        <span class="kicker">Resultados</span>
+        <h2>Números que a gente <span class="accent">acompanha todo dia</span> — e mostra pra você.</h2>
+      </div>
+      <div class="results-grid">
+        <div class="result-cell reveal" data-reveal>
+          <div class="result-num">−32%</div>
+          <div class="result-label">Redução média de CPA em 90 dias</div>
+        </div>
+        <div class="result-cell reveal" data-reveal>
+          <div class="result-num">4.8x</div>
+          <div class="result-label">ROAS médio em contas ativas</div>
+        </div>
+        <div class="result-cell reveal" data-reveal>
+          <div class="result-label">Até</div>
+          <div class="result-num">24h</div>
+          <div class="result-label">Tempo médio de resposta no WhatsApp</div>
+        </div>
+      </div>
+      <div class="testimonial reveal" data-reveal>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 17c-1.1 0-2-.9-2-2v-3c0-3 2-5.5 5-6l.5 1.6c-2 .6-3 2-3 3.4h2.5c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2H7zm9 0c-1.1 0-2-.9-2-2v-3c0-3 2-5.5 5-6l.5 1.6c-2 .6-3 2-3 3.4h2.5c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2h-3z"/></svg>
         <div>
+          <p>"A Tardivo Marketing foi um verdadeiro divisor de águas para o nosso negócio. Iniciamos com um investimento pequeno de teste e, em pouco tempo, escalamos a operação: hoje, os anúncios são responsáveis por cerca de 30% do nosso faturamento total."</p>
+          <div class="who"><b>Honorato Equipamentos</b> — Locação de Equipamentos para Construção, Rio de Janeiro/RJ.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO TRABALHAMOS -->
+  <section class="pad">
+    <div class="wrap">
+      <div class="section-head reveal" data-reveal>
+        <span class="kicker">Como trabalhamos</span>
+        <h2>Perto do seu negócio, <span class="accent">não só das suas campanhas.</span></h2>
+      </div>
+      <div class="process">
+        <div class="step reveal" data-reveal>
+          <div class="step-num">01</div>
           <h3>Atendimento consultivo e estratégico</h3>
           <p>Reuniões periódicas para alinhar metas e ler o cenário comercial do seu negócio.</p>
         </div>
-      </div>
-      <div class="work-item">
-        <span class="k">02</span>
-        <div>
+        <div class="step reveal" data-reveal>
+          <div class="step-num">02</div>
           <h3>Suporte ágil no dia a dia</h3>
-          <p>Comunicação direta e próxima pelo WhatsApp ou Slack para o que não pode esperar.</p>
+          <p>Comunicação direta e próxima pelo WhatsApp para o que não pode esperar.</p>
         </div>
-      </div>
-      <div class="work-item">
-        <span class="k">03</span>
-        <div>
+        <div class="step reveal" data-reveal>
+          <div class="step-num">03</div>
           <h3>Otimização contínua</h3>
           <p>Campanhas ajustadas todos os dias e páginas testadas para melhorar sempre a conversão.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CTA -->
-<section class="block" id="contato">
-  <div class="wrap" style="padding:0;">
-    <div class="cta-band reveal">
-      <div>
-        <h2>Vamos aumentar seus orçamentos?</h2>
-        <p>Chame no WhatsApp e receba um diagnóstico rápido do seu negócio, sem compromisso.</p>
+  <!-- DIAGNÓSTICO -->
+  <section class="pad" id="diagnostico">
+    <div class="wrap">
+      <div class="diag reveal" data-reveal>
+        <div class="diag-copy">
+          <h2>Receba um diagnóstico gratuito em até 24h.</h2>
+          <p>Conte um pouco do seu negócio e a gente te manda, pelo WhatsApp, um raio-x rápido de onde estão as maiores oportunidades de captação.</p>
+          <ul class="diag-points">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Sem compromisso, sem letra miúda</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Resposta direto no seu WhatsApp</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Leva menos de 1 minuto para preencher</li>
+          </ul>
+        </div>
+        <form id="diag-form">
+          <div class="form-row">
+            <div>
+              <label for="f-nome">Seu nome</label>
+              <input id="f-nome" name="nome" type="text" required placeholder="Como podemos te chamar">
+            </div>
+            <div>
+              <label for="f-negocio">Seu negócio</label>
+              <input id="f-negocio" name="negocio" type="text" required placeholder="Nome da empresa">
+            </div>
+          </div>
+          <div>
+            <label for="f-dificuldade">Principal dificuldade hoje</label>
+            <select id="f-dificuldade" name="dificuldade" required>
+              <option value="">Selecione uma opção</option>
+              <option>Poucos clientes chegando</option>
+              <option>Não sei anunciar direito no Google/Meta</option>
+              <option>Não tenho site ou landing page</option>
+              <option>Não apareço no Google local</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div>
+            <label for="f-investimento">Investimento aproximado em mídia / mês</label>
+            <select id="f-investimento" name="investimento">
+              <option value="">Ainda não invisto</option>
+              <option>Até R$ 500</option>
+              <option>R$ 500 a R$ 2.000</option>
+              <option>R$ 2.000 a R$ 5.000</option>
+              <option>Acima de R$ 5.000</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.92 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.03c-.24.68-1.4 1.3-1.93 1.37-.5.08-1.11.11-1.79-.11a16 16 0 0 1-1.65-.61c-2.9-1.25-4.79-4.17-4.93-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36l.56.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.5-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.35 1.46.29.15.46.13.63-.08.17-.2.72-.84.91-1.13.19-.29.38-.24.63-.14.26.09 1.65.78 1.93.92.29.14.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
+            Receber diagnóstico no WhatsApp
+          </button>
+        </form>
       </div>
-        <a class="btn btn-white btn-lg" href="https://wa.me/5521978757016" target="_blank" rel="noopener" style="z-index:50"> Falar no WhatsApp <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.5-.7-2.5-1.3-3.5-3-.3-.5.3-.4.7-1.4.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5.1-.8.4s-1 1-1 2.4 1.1 2.8 1.2 3c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.7L7 20.4A10 10 0 1012 2z"/></svg></a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="wrap reveal" data-reveal>
+      <h2>Vamos aumentar seus orçamentos?</h2>
+      <p>Chame no WhatsApp e receba um diagnóstico rápido do seu negócio, sem compromisso.</p>
+      <a class="btn btn-primary" href="https://wa.me/5521978757016" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.92 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.03c-.24.68-1.4 1.3-1.93 1.37-.5.08-1.11.11-1.79-.11a16 16 0 0 1-1.65-.61c-2.9-1.25-4.79-4.17-4.93-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36l.56.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.5-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.35 1.46.29.15.46.13.63-.08.17-.2.72-.84.91-1.13.19-.29.38-.24.63-.14.26.09 1.65.78 1.93.92.29.14.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
+        Falar no WhatsApp
+      </a>
+    </div>
+  </section>
+
+</main>
+
 <footer>
-  <div class="wrap foot-grid">
-    <div class="foot-brand">
-      <div class="brand">
-            <a href="#top" class="brand" aria-label="Tardivo Marketing">
-      <img src="logo.png" alt="Tardivo Marketing" class="brand-logo">
-    </a>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="https://www.tardivomarketing.com.br/logo.png" alt="Tardivo Marketing">
+        <p>Mais visibilidade. Mais orçamentos. Agência de marketing digital com base no Rio de Janeiro, atendendo negócios de todo o Brasil.</p>
       </div>
-      <p>Mais visibilidade. Mais orçamentos. Agência de marketing digital com base no Rio de Janeiro, atendendo negócios de todo o Brasil.</p>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Navegar</h4>
+          <a href="#servicos">Serviços</a>
+          <a href="#resultados">Resultados</a>
+          <a href="#para-quem">Para quem</a>
+          <a href="#diagnostico">Diagnóstico</a>
+        </div>
+        <div class="footer-col">
+          <h4>Fale com a gente</h4>
+          <a href="https://wa.me/5521978757016" target="_blank" rel="noopener">(21) 97875-7016</a>
+          <a href="https://instagram.com/tardivomarketing" target="_blank" rel="noopener">@tardivomarketing</a>
+        </div>
+      </div>
     </div>
-    <div class="foot-col">
-      <h4>Fale com a gente</h4>
-      <a href="https://wa.me/5521978757016" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="var(--orange)" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.5-.7-2.5-1.3-3.5-3-.3-.5.3-.4.7-1.4.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5.1-.8.4s-1 1-1 2.4 1.1 2.8 1.2 3c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.7L7 20.4A10 10 0 1012 2z"/></svg>
-        (21) 97875-7016
-      </a>
-      <a href="https://instagram.com/tardivomarketing" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="var(--orange)" stroke="none"/></svg>
-        @tardivomarketing
-      </a>
+    <div class="footer-bottom">
+      <span>© Tardivo Marketing · Rio de Janeiro, Brasil</span>
+      <span>Mais visibilidade. Mais orçamentos.</span>
     </div>
-    <div class="foot-col">
-      <h4>Navegar</h4>
-      <a href="#servicos">Serviços</a>
-      <a href="#para-quem">Para quem</a>
-      <a href="#como">Como trabalhamos</a>
-    </div>
-  </div>
-  <div class="wrap foot-bottom">
-    <span>© <span id="year"></span> Tardivo Marketing · Rio de Janeiro, Brasil</span>
-    <span>Mais visibilidade. Mais orçamentos.</span>
   </div>
 </footer>
 
-<!-- floating whatsapp -->
-<a class="wa-float" href="https://wa.me/5521978757016" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.5-.7-2.5-1.3-3.5-3-.3-.5.3-.4.7-1.4.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5.1-.8.4s-1 1-1 2.4 1.1 2.8 1.2 3c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.7L7 20.4A10 10 0 1012 2z"/></svg>
+<a class="float-wa" id="float-wa" href="https://wa.me/5521978757016" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.92 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.03c-.24.68-1.4 1.3-1.93 1.37-.5.08-1.11.11-1.79-.11a16 16 0 0 1-1.65-.61c-2.9-1.25-4.79-4.17-4.93-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36l.56.01c.18 0 .42-.07.65.5.24.58.81 2 .88 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.5-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.35 1.46.29.15.46.13.63-.08.17-.2.72-.84.91-1.13.19-.29.38-.24.63-.14.26.09 1.65.78 1.93.92.29.14.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
 </a>
 
 <script>
-  // year
-  document.getElementById('year').textContent = new Date().getFullYear();
+  // Mobile menu-less nav keeps CTA visible by default (see CSS breakpoint); no JS needed there.
 
-  // nav shadow on scroll
-  const nav = document.getElementById('nav');
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 12);
-  onScroll();
-  window.addEventListener('scroll', onScroll, {passive:true});
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:.15});
+    revealEls.forEach(el=>{ el.classList.add('reveal'); io.observe(el); });
+  } else {
+    revealEls.forEach(el=>el.classList.add('in'));
+  }
 
-  // reveal on scroll
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, {threshold:.14, rootMargin:'0px 0px -8% 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  // Count-up stat
+  const statEl = document.querySelector('[data-count]');
+  if(statEl){
+    const target = parseInt(statEl.getAttribute('data-count'),10);
+    const suffix = statEl.getAttribute('data-suffix') || '';
+    const span = statEl.querySelector('span');
+    let started = false;
+    const startCount = ()=>{
+      if(started) return;
+      started = true;
+      const dur = 1400, startTime = performance.now();
+      function tick(now){
+        const p = Math.min((now-startTime)/dur, 1);
+        const eased = 1 - Math.pow(1-p, 3);
+        span.textContent = Math.round(eased*target) + suffix;
+        if(p<1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    };
+    if('IntersectionObserver' in window){
+      const io2 = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ startCount(); io2.disconnect(); } });
+      },{threshold:.4});
+      io2.observe(statEl);
+    } else { startCount(); }
+  }
 
-  // trigger chart animation when in view
-  const chart = document.getElementById('chart');
-  const cio = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ chart.classList.add('in-view'); cio.unobserve(chart);} });
-  }, {threshold:.3});
-  cio.observe(chart);
+  // Floating WhatsApp button — show after hero
+  const floatWa = document.getElementById('float-wa');
+  const heroEl = document.querySelector('.hero');
+  window.addEventListener('scroll', ()=>{
+    const trigger = heroEl.offsetHeight * 0.8;
+    if(window.scrollY > trigger){ floatWa.classList.add('show'); }
+    else{ floatWa.classList.remove('show'); }
+  }, {passive:true});
+
+  // Diagnostic form -> builds a WhatsApp message
+  const form = document.getElementById('diag-form');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const nome = form.nome.value.trim();
+    const negocio = form.negocio.value.trim();
+    const dificuldade = form.dificuldade.value;
+    const investimento = form.investimento.value || 'Ainda não informado';
+    const msg = `Olá! Sou ${nome}, do negócio ${negocio}.%0APrincipal dificuldade: ${dificuldade}.%0AInvestimento aproximado em mídia: ${investimento}.%0AGostaria de receber um diagnóstico gratuito.`;
+    window.open(`https://wa.me/5521978757016?text=${msg}`, '_blank');
+  });
 </script>
+
 </body>
 </html>
